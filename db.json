@@ -1,41 +1,59 @@
 {
-    "admin": [
-        {
-            "id": 1,
-            "username": "admin",
-            "password": "admin"
-        }
+    "users": [
+      {
+        "id": 1,
+        "name": "Admin User",
+        "email": "admin@example.com",
+        "role": "admin",
+        "permissions": ["full_access"]
+      },
+      {
+        "id": 2,
+        "name": "Manager User",
+        "email": "manager@example.com",
+        "role": "manager",
+        "permissions": ["view_employees", "message_employees"]
+      },
+      {
+        "id": 3,
+        "name": "Employee User",
+        "email": "employee@example.com",
+        "role": "employee",
+        "permissions": ["view_self", "message_colleagues"]
+      }
     ],
-    "managers": [
-        {
-            "id": 1,
-            "name": "Evans Njuguna",
-            "password": "Njuguna",
-            "email": "evans@njuguna",
-            "department": "HR",
-            "position": "manager",
-            "salary": "100000"
-        }
-    ],
-    "employees": [
-        {   "id":1,
-            "name": "Emma Hayes",
-            "email": "emma@gmail.com",
-            "password": "employee",
-            "department": "HR",
-            "position": "employee",
-            "salary": "50000"
-        }
-    ],
-    "messages": [
-        {
-            "id": 1,
-            "sender_role": "admin",
-            "sender_id": "1",
-            "receiver_role": "employee",
-            "receiver_id": "1",
-            "message": "Hello, how are you?",
-            "time": "2021-06-01 12:00:00"
-        }
+    "conversations": [
+      {
+        "conversationId": 1,
+        "participants": [1, 2],
+        "messages": [
+          {
+            "senderId": 1,
+            "content": "Hi, Manager!",
+            "timestamp": "2025-01-25T10:00:00Z"
+          },
+          {
+            "senderId": 2,
+            "content": "Hello, Admin!",
+            "timestamp": "2025-01-25T10:01:00Z"
+          }
+        ]
+      },
+      {
+        "conversationId": 2,
+        "participants": [2, 3],
+        "messages": [
+          {
+            "senderId": 2,
+            "content": "How's your project going?",
+            "timestamp": "2025-01-25T10:10:00Z"
+          },
+          {
+            "senderId": 3,
+            "content": "It's going great, thanks for asking!",
+            "timestamp": "2025-01-25T10:12:00Z"
+          }
+        ]
+      }
     ]
-}
+  }

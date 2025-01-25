@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messaging System</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+  <div class="container">
+    <h1>Messaging System</h1>
+
+    <div class="chat-container">
+      <div class="users-list">
+        <h3>Users</h3>
+        <ul id="users"></ul>
+      </div>
+
+      <div class="chat-box">
+        <div class="messages" id="messages"></div>
+        <form id="message-form">
+          <input type="text" id="message-input" placeholder="Type your message..." required>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="chat.js"></script>
 </body>
 </html>
