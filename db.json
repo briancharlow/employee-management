@@ -1,0 +1,41 @@
+{
+    "admin": [
+        {
+            "id": 1,
+            "username": "admin",
+            "password": "admin"
+        }
+    ],
+    "managers": [
+        {
+            "id": 1,
+            "name": "Evans Njuguna",
+            "password": "Njuguna",
+            "email": "evans@njuguna",
+            "department": "HR",
+            "position": "manager",
+            "salary": "100000"
+        }
+    ],
+    "employees": [
+        {   "id":1,
+            "name": "Emma Hayes",
+            "email": "emma@gmail.com",
+            "password": "employee",
+            "department": "HR",
+            "position": "employee",
+            "salary": "50000"
+        }
+    ],
+    "messages": [
+        {
+            "id": 1,
+            "sender_role": "admin",
+            "sender_id": "1",
+            "receiver_role": "employee",
+            "receiver_id": "1",
+            "message": "Hello, how are you?",
+            "time": "2021-06-01 12:00:00"
+        }
+    ]
+}
