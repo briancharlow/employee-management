@@ -3,27 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Messaging System</title>
+  <title>Real-time Messaging</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Messaging System</h1>
 
-    <div class="chat-container">
-      <div class="users-list">
-        <h3>Users</h3>
-        <ul id="users"></ul>
-      </div>
+  <div id="chat-container">
+    <div id="messages-container"></div>
 
-      <div class="chat-box">
-        <div class="messages" id="messages"></div>
-        <form id="message-form">
-          <input type="text" id="message-input" placeholder="Type your message..." required>
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    </div>
+    <form id="message-form">
+      <input type="text" id="message-input" placeholder="Type a message" required />
+      <button type="submit">Send</button>
+    </form>
   </div>
 
   <script src="chat.js"></script>

@@ -1,59 +1,120 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "name": "Admin User",
-        "email": "admin@example.com",
-        "role": "admin",
-        "permissions": ["full_access"]
-      },
-      {
-        "id": 2,
-        "name": "Manager User",
-        "email": "manager@example.com",
-        "role": "manager",
-        "permissions": ["view_employees", "message_employees"]
-      },
-      {
-        "id": 3,
-        "name": "Employee User",
-        "email": "employee@example.com",
-        "role": "employee",
-        "permissions": ["view_self", "message_colleagues"]
-      }
-    ],
-    "conversations": [
-      {
-        "conversationId": 1,
-        "participants": [1, 2],
-        "messages": [
-          {
-            "senderId": 1,
-            "content": "Hi, Manager!",
-            "timestamp": "2025-01-25T10:00:00Z"
-          },
-          {
-            "senderId": 2,
-            "content": "Hello, Admin!",
-            "timestamp": "2025-01-25T10:01:00Z"
-          }
-        ]
-      },
-      {
-        "conversationId": 2,
-        "participants": [2, 3],
-        "messages": [
-          {
-            "senderId": 2,
-            "content": "How's your project going?",
-            "timestamp": "2025-01-25T10:10:00Z"
-          },
-          {
-            "senderId": 3,
-            "content": "It's going great, thanks for asking!",
-            "timestamp": "2025-01-25T10:12:00Z"
-          }
-        ]
-      }
-    ]
-  }
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "role": "admin",
+      "permissions": [
+        "full_access"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Manager User",
+      "email": "manager@example.com",
+      "role": "manager",
+      "permissions": [
+        "view_employees",
+        "message_employees"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Employee User",
+      "email": "employee@example.com",
+      "role": "employee",
+      "permissions": [
+        "view_self",
+        "message_colleagues"
+      ]
+    }
+  ],
+  "conversations": [
+    {
+      "id": "1",
+      "participants": [
+        1,
+        2
+      ],
+      "messages": [
+        {
+          "senderId": 1,
+          "content": "Hi, Manager!",
+          "timestamp": "2025-01-25T10:00:00Z"
+        },
+        {
+          "senderId": 2,
+          "content": "Hello, Admin!",
+          "timestamp": "2025-01-25T10:01:00Z"
+        },
+        {
+          "senderId": 2,
+          "content": "hey there too",
+          "timestamp": "2025-01-26T03:12:31.609Z"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "participants": [
+        2,
+        3
+      ],
+      "messages": [
+        {
+          "senderId": 2,
+          "content": "How's your project going?",
+          "timestamp": "2025-01-25T10:10:00Z"
+        },
+        {
+          "senderId": 3,
+          "content": "It's going great, thanks for asking!",
+          "timestamp": "2025-01-25T10:12:00Z"
+        },
+        {
+          "senderId": 2,
+          "content": "hey here",
+          "timestamp": "2025-01-26T03:00:06.238Z"
+        },
+        {
+          "senderId": 2,
+          "content": "hey there too",
+          "timestamp": "2025-01-26T03:03:16.423Z"
+        },
+        {
+          "senderId": 2,
+          "content": "i am doing great",
+          "timestamp": "2025-01-26T03:05:08.738Z"
+        },
+        {
+          "senderId": 3,
+          "content": "report to work",
+          "timestamp": "2025-01-26T03:13:07.674Z"
+        },
+        {
+          "senderId": 3,
+          "content": "okay",
+          "timestamp": "2025-01-26T03:13:59.543Z"
+        },
+        {
+          "senderId": 2,
+          "content": "hey here",
+          "timestamp": "2025-01-26T03:35:46.280Z"
+        },
+        {
+          "senderId": 2,
+          "content": "i am doing great",
+          "timestamp": "2025-01-26T03:36:39.632Z"
+        }
+      ]
+    },
+    {
+      "id": "5454",
+      "participants": [
+        "employee@example.com",
+        "manager@example.com"
+      ]
+    }
+  ]
+}
