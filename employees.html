@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<script defer src="rbac.js"></script>
+		<title>Employees Page</title>
+	</head>
+	<body class="employees-body">
+		<h1>Admin Panel - Employee Management</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Role</th>
+					<th>Department</th>
+					<th>Position</th>
+					<th>Salary</th>
+					<th class="hide-me">Actions</th>
+				</tr>
+			</thead>
+			<tbody id="employee-table">
+				<!-- Rows will be dynamically populated -->
+			</tbody>
+		</table>
+		<!-- <button class="update">UPDATE</button>
+		<button class="delete">DELETE</button> -->
+	</body>
+</html>
