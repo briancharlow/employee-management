@@ -1,79 +1,95 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:3000";
+let userId = 2;
+let selectedConversation = null;
 
-  const userId = 2;
-  const recipientId = 3;
+async function fetchConversations() {
+  const response = await fetch(`${API_URL}/conversations`);
+  const conversations = await response.json();
 
-  async function displayMessages(conversation) {
-    const messagesContainer = document.getElementById("messages-container");
-    if (messagesContainer) {
-      messagesContainer.innerHTML = "";
+  const conversationsContainer = document.getElementById("conversations");
+  conversationsContainer.innerHTML = "";
 
-      conversation.messages.forEach((message) => {
-        const messageElement = document.createElement("div");
-        messageElement.classList.add("message");
-        messageElement.textContent = `${
-          message.senderId === userId ? "Sender" : "Recipient"
-        }: ${message.content}`;
-        messagesContainer.appendChild(messageElement);
-      });
+  conversations.forEach(conversation => {
+    const button = document.createElement("button");
+    button.textContent = `Conversation with User ${conversation.participants.find(p => p !== userId)}`;
+    button.onclick = () => selectConversation(conversation);
+    conversationsContainer.appendChild(button);
+  });
+}
 
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+function selectConversation(conversation) {
+  selectedConversation = conversation;
+  displayMessages(conversation);
+}
+
+function displayMessages(conversation) {
+  const messagesContainer = document.getElementById("messages-container");
+  messagesContainer.innerHTML = "";
+
+  conversation.messages.forEach(message => {
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("message");
+    if (message.senderId === userId) {
+      messageElement.classList.add("you");
+      messageElement.textContent = `You: ${message.content}`;
+    } else {
+      messageElement.classList.add("recipient");
+      messageElement.textContent = `Recipient: ${message.content}`;
     }
-  }
-  async function getConversation() {
-    const response = await fetch(`${API_URL}/conversations`);
-    const conversations = await response.json();
-    return conversations.find(
-      (conv) =>
-        conv.participants.includes(userId) &&
-        conv.participants.includes(recipientId)
-    );
-  }
+    messagesContainer.appendChild(messageElement);
+  });
 
-  async function sendMessage(messageContent) {
-    const conversation = await getConversation();
-    if (conversation && conversation.id) {
-      const newMessage = {
-        senderId: userId,
-        content: messageContent,
-        timestamp: new Date().toISOString(),
-      };
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
 
-      conversation.messages.push(newMessage);
+async function sendMessage(content) {
+  if (!selectedConversation) return;
 
-      await fetch(`${API_URL}/conversations/${conversation.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: conversation.messages }),
-      });
+  const newMessage = {
+    senderId: userId,
+    content,
+    timestamp: new Date().toISOString(),
+  };
 
-      displayMessages(conversation);
-    }
-  }
-  document
-    .getElementById("message-form")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      const messageInput = document.getElementById("message-input");
-      const messageContent = messageInput.value.trim();
+  selectedConversation.messages.push(newMessage);
 
-      if (messageContent) {
-        sendMessage(messageContent);
-        messageInput.value = "";
+  await fetch(`${API_URL}/conversations/${selectedConversation.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ messages: selectedConversation.messages }),
+  });
+
+  displayMessages(selectedConversation);
+}
+
+async function pollMessages() {
+  if (selectedConversation) {
+    const response = await fetch(`${API_URL}/conversations/${selectedConversation.id}`);
+    const updatedConversation = await response.json();
+
+    if (JSON.stringify(updatedConversation.messages) !== JSON.stringify(selectedConversation.messages)) {
+      selectedConversation = updatedConversation;
+      displayMessages(updatedConversation);
+
+      const newMessages = updatedConversation.messages.filter(
+        msg => msg.senderId !== userId && !selectedConversation.messages.includes(msg)
+      );
+      if (newMessages.length > 0) {
+        alert("New message received!");
       }
-    });
-  async function initializeChat() {
-    const conversation = await getConversation();
-    if (conversation) displayMessages(conversation);
+    }
   }
+}
+document.getElementById("message-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const messageInput = document.getElementById("message-input");
+  const content = messageInput.value.trim();
 
-  async function pollConversation() {
-    const conversation = await getConversation();
-    if (conversation) displayMessages(conversation);
-    setTimeout(pollConversation, 3000);
+  if (content) {
+    sendMessage(content);
+    messageInput.value = "";
   }
-
-  initializeChat();
-  pollConversation();
 });
+
+setInterval(pollMessages, 3000); 
+fetchConversations();

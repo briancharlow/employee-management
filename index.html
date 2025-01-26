@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-time Messaging</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Messaging</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Messaging System</h1>
 
-  <div id="chat-container">
-    <div id="messages-container"></div>
+    <div>
+      <h3>Conversations</h3>
+      <div id="conversations"></div>
+    </div>
 
-    <form id="message-form">
-      <input type="text" id="message-input" placeholder="Type a message" required />
-      <button type="submit">Send</button>
-    </form>
-  </div>
+    <div>
+      <h3>Messages</h3>
+      <div
+        id="messages-container"
+        style="display: flex; flex-direction: column"
+      ></div>
+      <form id="message-form">
+        <input type="text" id="message-input" placeholder="Type a message..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
 
-  <script src="chat.js"></script>
-</body>
+    <script src="chat.js"></script>
+  </body>
 </html>
