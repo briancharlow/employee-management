@@ -51,12 +51,15 @@ const signupContainer = document.getElementById('signupContainer');
         // Signup form submission
         signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            const userId = Math.floor(Math.random() * 1000);
             const userData = {
+                id: userId.toString(),
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 password: document.getElementById('password').value,
                 role: document.getElementById('role').value,
                 department: document.getElementById('department').value,
+                position: document.getElementById('position').value,
                 salary: parseFloat(document.getElementById('salary').value),
                 permissions: getPermissions(document.getElementById('role').value)
             };
@@ -79,7 +82,9 @@ const signupContainer = document.getElementById('signupContainer');
                         email: email,
                     }
         
-                    emailjs.send('service_5pbp3sh', 'template_17rdy21', params).then(showMessage(signupMessageBox, `Verification email sent to ${email}`));
+                    // emailjs.send('service_5pbp3sh', 'template_17rdy21', params).then(showMessage(signupMessageBox, `Verification email sent to ${email}`));
+
+                    window.location.href = 'profile-page.html';
                 } else {
                     showMessage(signupMessageBox, 'Registration failed', 'error');
                 }
@@ -103,6 +108,7 @@ const signupContainer = document.getElementById('signupContainer');
                     localStorage.setItem('currentUser', JSON.stringify(users[0]));
                     localStorage.setItem('session', 'active');
                     showMessage(loginMessageBox, 'Login successful!');
+                    window.location.href = 'profile-page.html';
                 } else {
                     showMessage(loginMessageBox, 'Invalid email or password', 'error');
                 }
@@ -136,4 +142,8 @@ const signupContainer = document.getElementById('signupContainer');
                 default:
                     return [];
             }
+        }
+        function logOut() {
+            localStorage.clear();
+            window.location.href = 'index.html';
         }

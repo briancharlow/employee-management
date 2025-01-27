@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="rbac.css" />
 		<script defer src="rbac.js"></script>
+		<script defer src="auth.js"></script>
 		<title>Profile Page</title>
 	</head>
 	<body>
@@ -12,24 +13,15 @@
 		<div class="navbar">
 			<h1>Employee System</h1>
 			<ul>
-				<li><a href="./messages.html">Chats</a></li>
-				<li class="employees-page"><a href="./employees.html">Employee List</a></li>
+				<li><a href="./chat.html">Chats</a></li>
+				<li class="employees-page" id="employee-link"><a href="./employees.html">Employee List</a></li>
 			</ul>
-			<button class="logout-btn" onclick="logout()">Logout</button>
+			<button class="logout-btn" onclick="logOut()">Logout</button>
 		</div>
 
 		<!-- Profile Card -->
 		<div class="profile-container">
-			<div class="profile-card">
-				<h2>Welcome, <span id="user-name">User Name</span></h2>
-				<hr />
-				<div class="info">
-					<p><strong>Email:</strong> <span id="user-email">user@example.com</span></p>
-					<p><strong>Role:</strong> <span id="user-role">Employee</span></p>
-					<p><strong>Department:</strong> <span id="user-department">Marketing</span></p>
-					<p><strong>Position:</strong> <span id="user-position">Assistant</span></p>
-				</div>
-			</div>
+			
 		</div>
 	</body>
 </html>

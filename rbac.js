@@ -1,5 +1,7 @@
 let usersURL = 'http://localhost:3000/users/';
-
+let currentUser = localStorage.getItem('currentUser')
+	? JSON.parse(localStorage.getItem('currentUser'))
+	: null;
 async function getUsers() {
 	try {
 		let response = await fetch(usersURL);
@@ -36,8 +38,34 @@ let employeesPage = document.querySelector('.employees-page');
 
 let employeesTable = document.querySelector('#employee-table');
 
+
+async function populateProfile() {
+		
+	let profileInfo = document.querySelector('.profile-container');
+	profileInfo.innerHTML = `
+		<div class="profile-card">
+				<h2>Welcome, <span id="user-name">${currentUser.name}</span></h2>
+				<hr />
+				<div class="info">
+					<p><strong>Email:</strong> <span id="user-email">${currentUser.email}</span></p>
+					<p><strong>Role:</strong> <span id="user-role">${currentUser.role}</span></p>
+					<p><strong>Department:</strong> <span id="user-department">${currentUser.department}</span></p>
+					<p><strong>Position:</strong> <span id="user-position">${currentUser.position}</span></p>
+					<p><strong>Salary:</strong> <span id="user-salary">${currentUser.salary}</span></p>
+				</div>
+			</div>
+	`;
+	
+}
+ populateProfile()
 async function roleBasedRendering() {
-	let userLoggedIn = await getSingleUser('1');
+	let userLoggedIn = currentUser
+	console.log('The user logged in is', userLoggedIn);
+
+
+	
+
+	
 	let allUsers = await getUsers();
 	console.log('The user logged in is', userLoggedIn);
 
@@ -51,21 +79,37 @@ async function roleBasedRendering() {
           <td>${user.department}</td>
           <td>${user.position}</td>
           <td>${user.salary}</td>
-          <td class="action-buttons">
+		  ${user.role == 'admin' ? ` <td class="action-buttons">
             <button class="update" onclick="openModal(${user.id})">Update</button>
             <button class="delete" onclick="deleteUser(${user.id})">Delete</button>
-          </td>`;
+          </td>` : ``}
+         `;
 		employeesTable.appendChild(newRow);
 		let updateButton = document.querySelector('.update');
 		let deleteButton = document.querySelector('.delete');
 		let thingsToHide = document.querySelector('.hide-me');
-		if (userLoggedIn.role == 'employee') {
-			employeesPage.classList.add('hidden');
-		} else if (userLoggedIn.role == 'manager') {
-			updateButton.classList.add('hidden');
-			deleteButton.classList.add('hidden');
-			thingsToHide.classList.add('hidden');
+
+		let link= document.querySelector('#employee-link');
+	if (userLoggedIn.role == 'employee') {
+	
+		employeesPage.classList.add('hidden');
+		link.classList.add('hidden');
+	}
+	else if (userLoggedIn.role == 'manager') {
+			updateButton.style.display = 'none';
+			deleteButton.style.display = 'none';
+			thingsToHide.style.display = 'none';
 		}
+		if (currentUser.role == 'employee') {
+			console.log('The role of  user logged in is', currentUser.role);
+			
+			employeesPage.classList.add('hidden');
+		 }
+		//  else if (userLoggedIn.role == 'manager') {
+		// 	updateButton.classList.add('hidden');
+		// 	deleteButton.classList.add('hidden');
+		// 	thingsToHide.classList.add('hidden');
+		// }
 	});
 }
 roleBasedRendering();
@@ -86,62 +130,91 @@ async function openModal(userId) {
 		document.getElementById('salary').value = user.salary;
 		document.getElementById('update-modal').classList.add('active');
 	}
-	await saveUpdates(user.id);
+
+	let updateButton = document.querySelector('.update-btn');
+	updateButton.addEventListener('click', async (event) => {
+		event.preventDefault();
+		await saveUpdates(user.id);
+	});
+	
+}
+
+// Save updates
+// Delete user
+async function deleteUser(userId) {
+    try {
+        // Convert userId to string to ensure consistent handling
+        const id = userId.toString();
+        const response = await fetch(`http://localhost:3000/users/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            console.log(`User ${id} deleted successfully`);
+            // Refresh the table after successful deletion
+            await roleBasedRendering();
+        } else {
+            throw new Error(`Failed to delete user. Status: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        alert('An error occurred while deleting the user.');
+    }
 }
 
 // Save updates
 async function saveUpdates(userId) {
-	try {
-		const name = document.getElementById('name').value;
-		const email = document.getElementById('email').value;
-		const role = document.getElementById('role').value;
-		const department = document.getElementById('department').value;
-		const position = document.getElementById('position').value;
-		const salary = document.getElementById('salary').value;
+    try {
+        // Convert userId to string
+        const id = userId.toString();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const role = document.getElementById('role').value;
+        const department = document.getElementById('department').value;
+        const position = document.getElementById('position').value;
+        const salary = document.getElementById('salary').value;
 
-		let updatedDetails = { name, email, role, department, position, salary };
+        const updatedDetails = { 
+            id,  // Include the ID in the updated details
+            name, 
+            email, 
+            role, 
+            department, 
+            position, 
+            salary 
+        };
 
-		const response = await fetch(`http://localhost:3000/users/${userId}`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(updatedDetails),
-		});
+        const response = await fetch(`http://localhost:3000/users/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedDetails)
+        });
 
-		if (response.ok) {
-			const updatedUser = await response.json();
-			alert('Employee updated successfully!');
-		} else {
-			alert('Failed to update');
-		}
+        if (!response.ok) {
+            throw new Error(`Failed to update user. Status: ${response.status}`);
+        }
 
-		closeModal();
-		populateTable();
-		alert('User details updated successfully!');
-	} catch (error) {
-		console.error(error.message);
-	}
+        const updatedUser = await response.json();
+        console.log('User updated successfully:', updatedUser);
+        
+        closeModal();
+        await roleBasedRendering(); // Refresh the table
+        alert('User details updated successfully!');
+    } catch (error) {
+        console.error('Error updating user:', error);
+        alert('An error occurred while updating the user.');
+    }
 }
 // Close modal
 function closeModal() {
 	document.getElementById('update-modal').classList.remove('active');
 }
-// Delete user
-async function deleteUser(userId) {
-	try {
-		const response = await fetch(`http://localhost:3000/users/${userId}`, {
-			method: 'DELETE',
-		});
-
-		if (response.ok) {
-		} else {
-			alert('Failed to delete user. Please try again.');
-		}
-	} catch (error) {
-		console.error('Error deleting user:', error);
-		alert('An error occurred. Please check the console for details.');
-	}
-}
+// Delete use
 
 // async function updateEmployee(id) {}

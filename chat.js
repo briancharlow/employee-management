@@ -1,9 +1,60 @@
 const API_URL = "http://localhost:3000";
-let userId = 2;
+let userId = localStorage.getItem("currentUser.id");
 let selectedConversation = null;
+let usersURL = 'http://localhost:3000/users/';
+async function getUsers() {
+	try {
+		let response = await fetch(usersURL);
+		if (!response.ok) {
+			throw new Error(`a HTTP Error occured ${response.status}: ${response.statusText}`);
+		}
+		let usersFound = await response.json();
+		console.log(usersFound);
+		return usersFound;
+	} catch (error) {
+		console.error('Something unexpected happened', error.message);
+
+		throw error;
+	}
+}
+let res =  getUsers();
+console.log('res', res);
+async function populateUserSelect() {
+  try {
+    const users = await getUsers();
+    const userSelect = document.getElementById("user-select");
+
+    users.forEach(user => {
+      const option = document.createElement("option");
+      option.value = user.id;
+      option.textContent = user.name;
+      userSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Failed to populate user select', error.message);
+  }
+}
+
+populateUserSelect();
+
+
+document.getElementById("user-select").addEventListener("change", async (event) => {
+  const selectedUserId = event.target.value;
+  if (selectedUserId) {
+    const response = await fetch(`${API_URL}/conversations`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ participants: [userId, selectedUserId] }),
+    });
+
+    const newConversation = await response.json();
+    selectConversation(newConversation);
+    fetchConversations();
+  }
+});
 
 async function fetchConversations() {
-  const response = await fetch(`${API_URL}/conversations`);
+  const response = await fetch(`${API_URL}/conversations/${userId}`);
   const conversations = await response.json();
 
   const conversationsContainer = document.getElementById("conversations");

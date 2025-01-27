@@ -1,6 +1,4 @@
-.hidden {
-	display: none;
-}
+
 /* ==========EMPLOYEES LIST TABLE STYLES=========== */
 .employees-body {
 	font-family: Arial, sans-serif;
@@ -251,6 +249,9 @@ body {
 	font-size: 14px;
 	color: #666;
 	margin: 5px 0;
+}
+.hidden {
+	display: none;
 }
 
 /* Responsive design */
