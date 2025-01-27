@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset Password</title>
+   <link rel="stylesheet" href="reset.css">
+    <script defer src="reset.js"></script>
+</head>
+<body>
+    <div class="reset-container">
+        <div id="messageBox" class="message hidden"></div>
+        <form id="resetPasswordForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+            <button type="submit" class="btn">Reset Password</button>
+        </form>
+    </div>
+
+   
+</body>
+</html>

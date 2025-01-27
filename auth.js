@@ -74,7 +74,12 @@ const signupContainer = document.getElementById('signupContainer');
                     const user = await response.json();
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     localStorage.setItem('session', 'active');
-                    showMessage(signupMessageBox, 'Registration successful!');
+
+                    let params ={
+                        email: email,
+                    }
+        
+                    emailjs.send('service_5pbp3sh', 'template_17rdy21', params).then(showMessage(signupMessageBox, `Verification email sent to ${email}`));
                 } else {
                     showMessage(signupMessageBox, 'Registration failed', 'error');
                 }
@@ -111,6 +116,11 @@ const signupContainer = document.getElementById('signupContainer');
         forgotPasswordForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('resetEmail').value;
+            let params ={
+                email: email,
+            }
+
+            emailjs.send('service_5pbp3sh', 'template_17rdy21', params)
             showMessage(forgotPasswordMessageBox, `Verification email sent to ${email}`);
         });
 
