@@ -1,41 +1,205 @@
 {
-    "admin": [
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "password": "adminN@123",
+      "role": "admin",
+      "department": "IT",
+      "position": "QA",
+      "salary": 12000,
+      "permissions": [
+        "full_access"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Manager User",
+      "email": "manager@example.com",
+      "password": "Manager@123",
+      "role": "manager",
+      "department": "IT",
+      "position": "QA",
+      "salary": 12000,
+      "permissions": [
+        "view_employees",
+        "message_employees"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Employee User",
+      "email": "employee@example.com",
+      "password": "Employee@123",
+      "role": "employee",
+      "department": "IT",
+      "position": "QA",
+      "salary": 12000,
+      "permissions": [
+        "view_self",
+        "message_colleagues"
+      ]
+    },
+    {
+      "id": "68c3",
+      "name": "Daniel James",
+      "email": "briankyalo416@gmail.com",
+      "password": "Charlow@123",
+      "role": "employee",
+      "department": "IT",
+      "salary": 120000,
+      "permissions": [
+        "view_self",
+        "message_colleagues"
+      ]
+    },
+    {
+      "id": "80d5",
+      "name": "Brian Kyalo",
+      "email": "briankyalo416@gmail.com",
+      "password": "Charlow@123",
+      "role": "manager",
+      "department": "IT",
+      "salary": 30000,
+      "permissions": [
+        "view_employees",
+        "message_employees"
+      ]
+    },
+    {
+      "id": "f955",
+      "name": "Haniel James",
+      "email": "mwangangi.brian20@students.dkut.ac.ke",
+      "password": "Mwangangi",
+      "role": "employee",
+      "department": "IT",
+      "salary": 40000,
+      "permissions": [
+        "view_self",
+        "message_colleagues"
+      ]
+    },
+    {
+      "id": "936a",
+      "name": "Campeon Dennis",
+      "email": "binary01baron@gmail.com",
+      "password": "Binary@1242",
+      "role": "employee",
+      "department": "Sales",
+      "salary": 300000,
+      "permissions": [
+        "view_self",
+        "message_colleagues"
+      ]
+    },
+    {
+      "id": "db45",
+      "name": "Brian Kyalo",
+      "email": "binary01baron@gmail.com",
+      "password": "Vatyhnnn",
+      "role": "employee",
+      "department": "Sales",
+      "salary": 70000,
+      "permissions": [
+        "view_self",
+        "message_colleagues"
+      ]
+    }
+  ],
+  "conversations": [
+    {
+      "id": "1",
+      "participants": [
+        1,
+        2
+      ],
+      "messages": [
         {
-            "id": 1,
-            "username": "admin",
-            "password": "admin"
-        }
-    ],
-    "managers": [
+          "senderId": 1,
+          "content": "Hi, Manager!",
+          "timestamp": "2025-01-25T10:00:00Z"
+        },
         {
-            "id": 1,
-            "name": "Evans Njuguna",
-            "password": "Njuguna",
-            "email": "evans@njuguna",
-            "department": "HR",
-            "position": "manager",
-            "salary": "100000"
-        }
-    ],
-    "employees": [
-        {   "id":1,
-            "name": "Emma Hayes",
-            "email": "emma@gmail.com",
-            "password": "employee",
-            "department": "HR",
-            "position": "employee",
-            "salary": "50000"
-        }
-    ],
-    "messages": [
+          "senderId": 2,
+          "content": "Hello, Admin!",
+          "timestamp": "2025-01-25T10:01:00Z"
+        },
         {
-            "id": 1,
-            "sender_role": "admin",
-            "sender_id": "1",
-            "receiver_role": "employee",
-            "receiver_id": "1",
-            "message": "Hello, how are you?",
-            "time": "2021-06-01 12:00:00"
+          "senderId": 2,
+          "content": "hey there too",
+          "timestamp": "2025-01-26T03:12:31.609Z"
+        },
+        {
+          "senderId": 2,
+          "content": "report to work today",
+          "timestamp": "2025-01-26T04:37:55.504Z"
+        },
+        {
+          "senderId": 2,
+          "content": "okay",
+          "timestamp": "2025-01-26T04:46:52.850Z"
+        },
+        {
+          "senderId": 2,
+          "content": "report to work",
+          "timestamp": "2025-01-26T07:10:44.597Z"
         }
-    ]
+      ]
+    },
+    {
+      "id": "2",
+      "participants": [
+        2,
+        3
+      ],
+      "messages": [
+        {
+          "senderId": 2,
+          "content": "How's your project going?",
+          "timestamp": "2025-01-25T10:10:00Z"
+        },
+        {
+          "senderId": 3,
+          "content": "It's going great, thanks for asking!",
+          "timestamp": "2025-01-25T10:12:00Z"
+        },
+        {
+          "senderId": 2,
+          "content": "hey here",
+          "timestamp": "2025-01-26T03:00:06.238Z"
+        },
+        {
+          "senderId": 2,
+          "content": "hey there too",
+          "timestamp": "2025-01-26T03:03:16.423Z"
+        },
+        {
+          "senderId": 2,
+          "content": "i am doing great",
+          "timestamp": "2025-01-26T03:05:08.738Z"
+        },
+        {
+          "senderId": 3,
+          "content": "report to work",
+          "timestamp": "2025-01-26T03:13:07.674Z"
+        },
+        {
+          "senderId": 3,
+          "content": "okay",
+          "timestamp": "2025-01-26T03:13:59.543Z"
+        },
+        {
+          "senderId": 2,
+          "content": "hey here",
+          "timestamp": "2025-01-26T03:35:46.280Z"
+        },
+        {
+          "senderId": 2,
+          "content": "i am doing great",
+          "timestamp": "2025-01-26T03:36:39.632Z"
+        }
+      ]
+    }
+  ]
 }
