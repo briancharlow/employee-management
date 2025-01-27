@@ -41,6 +41,34 @@
         "view_self",
         "message_colleagues"
       ]
+    },
+    {
+      "id": "60",
+      "name": "Daniel Craig",
+      "email": "briankyalo416@gmail.com",
+      "password": "jjjj",
+      "role": "employee",
+      "department": "IT",
+      "position": "QA",
+      "salary": 6777777,
+      "permissions": [
+        "view_self",
+        "message_colleagues"
+      ]
+    },
+    {
+      "id": "800",
+      "name": "Daniel James",
+      "email": "mwangangi.brian20@students.dkut.ac.ke",
+      "password": "thanl",
+      "role": "employee",
+      "department": "IT",
+      "position": "QA",
+      "salary": 900000,
+      "permissions": [
+        "view_self",
+        "message_colleagues"
+      ]
     }
   ],
   "conversations": [
