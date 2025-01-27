@@ -32,7 +32,8 @@
     "wrap-ansi": "^7.0.0",
     "y18n": "^5.0.8",
     "yargs": "^17.7.2",
-    "yargs-parser": "^21.1.1"
+    "yargs-parser": "^21.1.1",
+    "json-server": "^1.0.0-beta.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -49,10 +50,4 @@
   },
   "homepage": "https://github.com/briancharlow/employee-management#readme",
   "description": ""
-}
-
-{
-  "dependencies": {
-    "json-server": "^1.0.0-beta.3"
-  }
 }

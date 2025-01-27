@@ -106,37 +106,6 @@
         "message_colleagues"
       ]
     }
-  ]
-  "users": [
-    {
-      "id": "1",
-      "name": "Admin User",
-      "email": "admin@example.com",
-      "role": "admin",
-      "permissions": [
-        "full_access"
-      ]
-    },
-    {
-      "id": "2",
-      "name": "Manager User",
-      "email": "manager@example.com",
-      "role": "manager",
-      "permissions": [
-        "view_employees",
-        "message_employees"
-      ]
-    },
-    {
-      "id": "3",
-      "name": "Employee User",
-      "email": "employee@example.com",
-      "role": "employee",
-      "permissions": [
-        "view_self",
-        "message_colleagues"
-      ]
-    }
   ],
   "conversations": [
     {
