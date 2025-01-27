@@ -69,6 +69,20 @@
         "view_self",
         "message_colleagues"
       ]
+    },
+    {
+      "id": "770",
+      "name": "Daniel James",
+      "email": "briankyalo413@gmail.com",
+      "password": "Whater@123",
+      "role": "employee",
+      "department": "IT",
+      "position": "QA",
+      "salary": 9000,
+      "permissions": [
+        "view_self",
+        "message_colleagues"
+      ]
     }
   ],
   "conversations": [

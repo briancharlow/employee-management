@@ -2,6 +2,20 @@ let usersURL = 'http://localhost:3000/users/';
 let currentUser = localStorage.getItem('currentUser')
 	? JSON.parse(localStorage.getItem('currentUser'))
 	: null;
+
+
+	const messageBox = document.getElementById('employeeMessageBox');
+
+	// Show message function
+	function showMessage(message, type) {
+		messageBox.textContent = message;
+		messageBox.className = `message ${type}`;
+		messageBox.classList.remove('hidden');
+	
+		setTimeout(() => {
+			messageBox.classList.add('hidden');
+		}, 5000);
+	}
 async function getUsers() {
 	try {
 		let response = await fetch(usersURL);
@@ -157,7 +171,7 @@ async function deleteUser(userId) {
         }
     } catch (error) {
         console.error('Error deleting user:', error);
-        alert('An error occurred while deleting the user.');
+        showMessage(error.message, 'error');
     }
 }
 
@@ -201,7 +215,7 @@ async function saveUpdates(userId) {
         
         closeModal();
         await roleBasedRendering(); // Refresh the table
-        alert('User details updated successfully!');
+       showMessage('User updated successfully', 'success');
     } catch (error) {
         console.error('Error updating user:', error);
         alert('An error occurred while updating the user.');
