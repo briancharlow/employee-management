@@ -4,6 +4,7 @@
       "id": "1",
       "name": "Admin User",
       "email": "admin@example.com",
+      "password": "admin",
       "role": "admin",
       "department": "IT",
       "position": "QA",
@@ -13,6 +14,7 @@
       "id": "37",
       "name": "Daniel Craig",
       "email": "briankyalo416@gmail.com",
+      "password": "james",
       "role": "employee",
       "department": "Sales",
       "position": "undefined",
@@ -180,13 +182,72 @@
         "495",
         "1"
       ],
-      "messages": []
+      "messages": [
+        {
+          "senderId": "495",
+          "content": "hhhh",
+          "timestamp": "2025-01-27T12:55:45.398Z"
+        },
+        {
+          "senderId": "495",
+          "content": "jjjjjjj",
+          "timestamp": "2025-01-27T12:55:53.967Z"
+        },
+        {
+          "senderId": "1",
+          "content": "hi",
+          "timestamp": "2025-01-27T13:03:53.493Z"
+        },
+        {
+          "senderId": "1",
+          "content": "ggg",
+          "timestamp": "2025-01-27T13:04:13.911Z"
+        },
+        {
+          "senderId": "1",
+          "content": "ggg",
+          "timestamp": "2025-01-27T13:04:24.545Z"
+        },
+        {
+          "senderId": "1",
+          "content": "ggg",
+          "timestamp": "2025-01-27T13:09:12.277Z"
+        }
+      ]
     },
     {
       "id": "1f61",
       "participants": [
         "495",
         "357"
+      ],
+      "messages": [
+        {
+          "senderId": "495",
+          "content": "hhhh",
+          "timestamp": "2025-01-27T12:55:35.234Z"
+        }
+      ]
+    },
+    {
+      "id": "c75c",
+      "participants": [
+        "1",
+        "357"
+      ],
+      "messages": [
+        {
+          "senderId": "1",
+          "content": "hi",
+          "timestamp": "2025-01-27T13:01:06.376Z"
+        }
+      ]
+    },
+    {
+      "id": "ca58",
+      "participants": [
+        "1",
+        "37"
       ],
       "messages": []
     }
