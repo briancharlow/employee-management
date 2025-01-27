@@ -22,6 +22,7 @@ async function getUsers() {
     }
 }
 
+
 async function populateUserSelect() {
     try {
         const users = await getUsers();
@@ -161,6 +162,7 @@ async function selectConversation(conversation) {
     document.getElementById("message-form").style.display = "block";
 }
 async function displayMessages(conversation) {
+  
   const messagesContainer = document.getElementById("messages-container");
   messagesContainer.innerHTML = "";
 
@@ -247,6 +249,15 @@ document.getElementById("message-form").addEventListener("submit", async (event)
     }
     displayMessages(selectConversation)
 });
+function optionalRendering() {
+  
+	let link= document.querySelector('#employee-link');
+	if (currentUser.role == 'employee') {
+	
+		link.classList.add('hidden');
+	}
+}
+optionalRendering();
 
 // Initialize the chat system
 if (userId) {

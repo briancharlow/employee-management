@@ -4,7 +4,6 @@
       "id": "1",
       "name": "Admin User",
       "email": "admin@example.com",
-      "password": "admin",
       "role": "admin",
       "department": "IT",
       "position": "QA",
@@ -24,28 +23,23 @@
       "id": "357",
       "name": "Brian Kyalo",
       "email": "jamesnjugunan998@gmail.com",
-      "password": "james",
       "role": "employee",
       "department": "Sales",
       "position": "QA",
-      "salary": 9000000,
+      "salary": "91"
+    },
+    {
+      "id": "766",
+      "name": "Haniel James",
+      "email": "briankyalo416@gmail.com",
+      "password": "user",
+      "role": "employee",
+      "department": "IT",
+      "position": "QA",
+      "salary": 99000000,
       "permissions": [
         "view_self",
         "message_colleagues"
-      ]
-    },
-    {
-      "id": "495",
-      "name": "ffffaniel James",
-      "email": "binary01baron@gmail.com",
-      "password": "jjjjj",
-      "role": "manager",
-      "department": "Sales",
-      "position": "QA",
-      "salary": 400,
-      "permissions": [
-        "view_employees",
-        "message_employees"
       ]
     }
   ],
@@ -153,7 +147,8 @@
       "participants": [
         null,
         "37"
-      ]
+      ],
+      "messages": []
     },
     {
       "id": "ec3f",
@@ -250,6 +245,25 @@
         "37"
       ],
       "messages": []
+    },
+    {
+      "id": "89c8",
+      "participants": [
+        "766",
+        "37"
+      ],
+      "messages": [
+        {
+          "senderId": "766",
+          "content": "ggg",
+          "timestamp": "2025-01-27T14:16:08.816Z"
+        },
+        {
+          "senderId": "766",
+          "content": "hi",
+          "timestamp": "2025-01-27T14:16:18.946Z"
+        }
+      ]
     }
   ]
 }
