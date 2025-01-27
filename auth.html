@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <script defer src="auth.js" ></script>
+    <link rel="stylesheet" href="auth.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "FBkrG3Ajva_ggJ9Ou",
+      });
+   })();
+</script>
+</head>
+<body>
+    <div class="container" id="signupContainer">
+        <div id="signupMessageBox" class="message-box hidden"></div>
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" required>
+                    <option value="">Select Role</option>
+                    <option value="manager">Manager</option>
+                    <option value="admin">Admin</option>
+                    <option value="employee">Employee</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" required>
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="number" id="salary" required>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <div class="toggle-link" id="loginToggle">Already have an account? Login</div>
+    </div>
+
+    <div class="container hidden" id="loginContainer">
+        <div id="loginMessageBox" class="message-box hidden"></div>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="toggle-link" id="forgotPasswordToggle">Forgot Password?</div>
+        <div class="toggle-link" id="signupToggle">Don't have an account? Sign Up</div>
+    </div>
+
+    <div class="container hidden" id="forgotPasswordContainer">
+        <div id="forgotPasswordMessageBox" class="message-box hidden"></div>
+        <h2>Reset Password</h2>
+        <form id="forgotPasswordForm">
+            <div class="form-group">
+                <label for="resetEmail">Email</label>
+                <input type="email" id="resetEmail" required>
+            </div>
+            <button type="submit" class="btn">Send Verification</button>
+        </form>
+        <div class="toggle-link" id="backToLoginToggle">Back to Login</div>
+    </div>
+
+</body>
+</html>
