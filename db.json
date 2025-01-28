@@ -47,6 +47,20 @@
         "view_employees",
         "message_employees"
       ]
+    },
+    {
+      "id": "489",
+      "name": "James Njuguna",
+      "email": "ngangajamesnjugunah@gmail.com",
+      "password": "12345",
+      "role": "manager",
+      "department": "Finance",
+      "position": "CEO",
+      "salary": 200000,
+      "permissions": [
+        "view_employees",
+        "message_employees"
+      ]
     }
   ],
   "conversations": [
@@ -248,6 +262,120 @@
       "participants": [
         "1",
         "37"
+      ],
+      "messages": []
+    },
+    {
+      "id": "8673",
+      "participants": [
+        "489",
+        "1"
+      ],
+      "messages": [
+        {
+          "senderId": "489",
+          "content": "hey there admin,hope ypu are doing well",
+          "timestamp": "2025-01-27T13:48:04.726Z"
+        },
+        {
+          "senderId": "489",
+          "content": "i am great too",
+          "timestamp": "2025-01-27T13:52:21.897Z"
+        },
+        {
+          "senderId": "489",
+          "content": "i was to report today",
+          "timestamp": "2025-01-27T13:55:40.725Z"
+        },
+        {
+          "senderId": "489",
+          "content": "okay",
+          "timestamp": "2025-01-27T13:56:55.392Z"
+        },
+        {
+          "senderId": "489",
+          "content": "hey here",
+          "timestamp": "2025-01-27T14:01:42.537Z"
+        },
+        {
+          "senderId": "489",
+          "content": "hey there too",
+          "timestamp": "2025-01-27T14:06:15.575Z"
+        },
+        {
+          "senderId": "489",
+          "content": "okay",
+          "timestamp": "2025-01-27T14:08:02.572Z"
+        },
+        {
+          "senderId": "489",
+          "content": "good day",
+          "timestamp": "2025-01-27T14:15:09.195Z"
+        },
+        {
+          "senderId": "489",
+          "content": "hello",
+          "timestamp": "2025-01-27T14:16:07.581Z"
+        },
+        {
+          "senderId": "489",
+          "content": "ger",
+          "timestamp": "2025-01-27T14:17:26.089Z"
+        },
+        {
+          "senderId": "489",
+          "content": "trrt",
+          "timestamp": "2025-01-27T14:17:59.507Z"
+        },
+        {
+          "senderId": "489",
+          "content": "hey",
+          "timestamp": "2025-01-27T14:25:44.128Z"
+        },
+        {
+          "senderId": "1",
+          "content": "okay you are not being paid nigga",
+          "timestamp": "2025-01-27T14:31:38.049Z"
+        },
+        {
+          "senderId": "1",
+          "content": "hey here",
+          "timestamp": "2025-01-27T14:33:30.728Z"
+        }
+      ]
+    },
+    {
+      "id": "35d9",
+      "participants": [
+        "489",
+        "37"
+      ],
+      "messages": [
+        {
+          "senderId": "489",
+          "content": "heyy there",
+          "timestamp": "2025-01-27T14:21:31.454Z"
+        },
+        {
+          "senderId": "489",
+          "content": "heyy",
+          "timestamp": "2025-01-27T14:26:33.191Z"
+        }
+      ]
+    },
+    {
+      "id": "49c6",
+      "participants": [
+        "489",
+        "357"
+      ],
+      "messages": []
+    },
+    {
+      "id": "011e",
+      "participants": [
+        "489",
+        "495"
       ],
       "messages": []
     }
