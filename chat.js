@@ -19,6 +19,7 @@ async function getUsers() {
   }
 }
 
+
 async function populateUserSelect() {
   try {
     const users = await getUsers();
@@ -117,6 +118,8 @@ async function selectConversation(conversation) {
 }
 
 function displayMessages(conversation) {
+async function displayMessages(conversation) {
+  
   const messagesContainer = document.getElementById("messages-container");
   messagesContainer.innerHTML = "";
 
@@ -187,6 +190,26 @@ document
   .getElementById("message-form")
   .addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    const messageInput = document.getElementById("message-input");
+    const content = messageInput.value;
+    
+    if (content.trim()) {
+        await sendMessage(content);
+        messageInput.value = "";
+    }
+    displayMessages(selectConversation)
+});
+function optionalRendering() {
+  
+	let link= document.querySelector('#employee-link');
+	if (currentUser.role == 'employee') {
+	
+		link.classList.add('hidden');
+	}
+}
+optionalRendering();
+>>>>>>> main
 
     const messageInput = document.getElementById("message-input");
     const content = messageInput.value.trim();

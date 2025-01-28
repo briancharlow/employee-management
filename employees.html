@@ -4,11 +4,22 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="rbac.css" />
+		
 		<script defer src="rbac.js"></script>
+		<script defer src="auth.js"></script>
 		<title>Employees Page</title>
 	</head>
 	<body class="employees-body">
-		<h1>Admin Panel - Employee Management</h1>
+		<div class="navbar">
+			<h1>Admin Panel - Employee Management</h1>
+			<ul>
+				<li><a href="./chat.html">Chats</a></li>
+				<li class="employees-page" id="employee-link"><a href="./employees.html">Employee List</a></li>
+			</ul>
+			<button class="logout-btn" onclick="logOut()">Logout</button>
+		</div>
+
+		<div id="signupMessageBox" class="message-box hidden"></div>
 		<table>
 			<thead>
 				<tr>

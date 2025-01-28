@@ -77,12 +77,12 @@ const signupContainer = document.getElementById('signupContainer');
                     const user = await response.json();
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     localStorage.setItem('session', 'active');
-
+                    let email = document.getElementById('email').value;
                     let params ={
                         email: email,
                     }
         
-                    // emailjs.send('service_5pbp3sh', 'template_17rdy21', params).then(showMessage(signupMessageBox, `Verification email sent to ${email}`));
+                    emailjs.send('service_5pbp3sh', 'template_17rdy21', params).then(showMessage(signupMessageBox, `Verification email sent to ${email}`));
 
                     window.location.href = 'profile-page.html';
                 } else {

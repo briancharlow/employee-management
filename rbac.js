@@ -58,16 +58,21 @@ async function populateProfile() {
 	
 }
  populateProfile()
+
 async function roleBasedRendering() {
 	let userLoggedIn = currentUser
 	console.log('The user logged in is', userLoggedIn);
-
-
 	
 
+	let link= document.querySelector('#employee-link');
+	if (currentUser.role == 'employee') {
+	
+		employeesPage.classList.add('hidden');
+		link.classList.add('hidden');
+	}
 	
 	let allUsers = await getUsers();
-	console.log('The user logged in is', userLoggedIn);
+	let isAdmin = currentUser.role == 'admin';
 
 	// employeesTable.innerHTML = '';
 	allUsers.forEach((user) => {
@@ -79,27 +84,18 @@ async function roleBasedRendering() {
           <td>${user.department}</td>
           <td>${user.position}</td>
           <td>${user.salary}</td>
-		  ${user.role == 'admin' ? ` <td class="action-buttons">
+		  ${isAdmin  ? ` <td class="action-buttons">
             <button class="update" onclick="openModal(${user.id})">Update</button>
             <button class="delete" onclick="deleteUser(${user.id})">Delete</button>
-          </td>` : ``}
+          </td>` : ''}
          `;
 		employeesTable.appendChild(newRow);
-		let updateButton = document.querySelector('.update');
-		let deleteButton = document.querySelector('.delete');
-		let thingsToHide = document.querySelector('.hide-me');
+		console.log(newRow);
+		
+		
+		
 
-		let link= document.querySelector('#employee-link');
-	if (userLoggedIn.role == 'employee') {
 	
-		employeesPage.classList.add('hidden');
-		link.classList.add('hidden');
-	}
-	else if (userLoggedIn.role == 'manager') {
-			updateButton.style.display = 'none';
-			deleteButton.style.display = 'none';
-			thingsToHide.style.display = 'none';
-		}
 		if (currentUser.role == 'employee') {
 			console.log('The role of  user logged in is', currentUser.role);
 			

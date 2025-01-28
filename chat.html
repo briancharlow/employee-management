@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real-Time Messaging</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="rbac.css">
+    <script defer src="auth.js"></script>
   </head>
   <body>
-    <h1>Messaging System</h1>
+    <div class="navbar">
+      <h1>Messaging System</h1>
+			<ul>
+        <li><a href="./profile-page.html">Home</a></li>
+				<li><a href="./chat.html">Chats</a></li>
+				<li class="employees-page" id="employee-link"><a href="./employees.html">Employee List</a></li>
+			</ul>
+			<button class="logout-btn" onclick="logOut()">Logout</button>
+		</div>
+
 
     <div>
       <h3>Conversations</h3>
