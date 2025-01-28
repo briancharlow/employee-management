@@ -117,7 +117,7 @@ async function selectConversation(conversation) {
   document.getElementById("message-form").style.display = "block";
 }
 
-function displayMessages(conversation) {
+
 async function displayMessages(conversation) {
   
   const messagesContainer = document.getElementById("messages-container");
@@ -209,16 +209,8 @@ function optionalRendering() {
 	}
 }
 optionalRendering();
->>>>>>> main
 
-    const messageInput = document.getElementById("message-input");
-    const content = messageInput.value.trim();
 
-    if (content) {
-      await sendMessage(content);
-      messageInput.value = "";
-    }
-  });
 
 window.addEventListener("load", async () => {
   if (!currentUser) {
@@ -233,3 +225,4 @@ window.addEventListener("load", async () => {
     selectConversation(selectedConversation);
   }
 });
+
