@@ -209,7 +209,6 @@ function optionalRendering() {
 	}
 }
 optionalRendering();
->>>>>>> main
 
     const messageInput = document.getElementById("message-input");
     const content = messageInput.value.trim();
